@@ -1,0 +1,69 @@
+/* Wes Helms */
+body {
+    font-family: Arial, monospace;
+    background-color: #f9f9f9;
+    margin: 20px;
+    padding: 10px;
+}
+
+h1 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #333;
+}
+
+body {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.info-list {
+    margin-top: 10px;
+}
+
+.dropdown-widget {
+    font-weight: bold;
+    background-color: blue;
+    color: white;
+    padding: 5;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    clip: auto;
+    display: inline-block;
+    position: relative;
+    background: white;
+    border: 1px solid #ccc;
+    max-height: 150px; /* Limits dropdown height */
+    overflow-y: scroll; /* Enables scrolling */
+    width: 160px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.dropdown-content ul {
+    list-style: none;
+    padding: 5;
+    margin: 0;
+}
+
+.dropdown-content li {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.dropdown-content li:hover {
+    background: lightgray;
+}
+
