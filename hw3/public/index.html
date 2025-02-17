@@ -1,147 +1,101 @@
 <!DOCTYPE html>
 <!-- Name: Wes Helms -->
 <script
-src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"/>
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
 </script>
-<script>
-    $(document).ready(function() {
-        $("#order-button").click(function(event) {
-            event.preventDefault(); // Prevents form submission
-
-            var notes = $("#notes").val().toLowerCase(); // Get the notes input and convert to lowercase
-            var quantity = $("#quantity").val(); // Get selected quantity
-            var topping = $("input[name='topping']:checked").val(); // Get selected topping
-
-            if (notes.includes("vegan")) {
-                alert("Warning: Cheesecakes contain dairy!");
-            } else {
-                // Ensure a topping is selected before proceeding
-                if (!topping) {
-                    alert("Please select a topping before placing your order.");
-                    return;
-                }
-
-                // Replace the entire form with a confirmation message
-                $("#order-form").replaceWith(`
-                    <div id="order-confirmation">
-                        <h2>Thank You!</h2>
-                        <p>Your order has been placed.</p>
-                        <p><strong>Topping:</strong> ${topping}</p>
-                        <p><strong>Quantity:</strong> ${quantity}</p>
-                        <p><strong>Notes:</strong> ${notes ? notes : "None"}</p>
-                    </div>
-                `);
-            }
-        });
-
-        // Show dropdown when hovering over "Jan" or the dropdown itself
-        $("#month-selector, #month-dropdown").hover(
-            function() {
-                $("#month-dropdown").stop(true, true).fadeIn();
-            },
-            function() {
-                $("#month-dropdown").stop(true, true).fadeOut();
-            }
-        );
-
-        // When a month is clicked, update text and close dropdown
-        $("#month-dropdown li").click(function() {
-            var selectedMonth = $(this).attr("data-month"); // Get month using attr()
-            $("#month-selector").text(selectedMonth);
-            $("#month-selector").attr("data-month", selectedMonth); // Update attribute
-            $("#month-dropdown").fadeOut();
-        });
-    });
+<!-- Link the js file -->
+<script
+    src="javascripts/main.js">
 </script>
-    
+<!-- The Rest of the HTML -->
 <html>
-<head>
-    <title>Cheesecake Order Form</title>
-    <!-- Link the CSS file -->
-    <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
-    <style>
-        /* Styling for table layout */
-        .form-table {
-            width: auto; /* Only as wide as necessary */
-            margin-bottom: 15px;
-            border-collapse: collapse; /* Remove extra spacing between table cells */
-        }
-        .form-table th, .form-table td {
-            text-align: left; /* Align text and elements to the left */
-        }
-        .form-table th {
-            vertical-align: top; /* Align headers to the top of their columns */
-            font-weight: normal; /* Make table headers not bold */
-        }
-        .notes-box {
-            display: block;
-            margin-top: 15px;
-        }
-    </style>
-</head>
-<body>
-    <!-- Cheesecake Order Form -->
-    <h1>Cheesecake Order Form</h1>
-    <!-- Cheesecake Image -->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg" alt="Cheesecake slice" width="200">
-    <br><br>
-    <form id="order-form">
-        <!-- Table for Quantity and Topping -->
-        <table class="order-form">
-            <tr>
-                <th>Quantity</th>
-                <th>Topping</th>
-            </tr>
-            <tr>
-                <td>
-                    <select id="quantity" name="quantity">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </td>
-                <td>
-                    <label><input type="radio" name="topping" value="Plain"> Plain</label><br>
-                    <label><input type="radio" name="topping" value="Cherry"> Cherry</label><br>
-                    <label><input type="radio" name="topping" value="Chocolate"> Chocolate</label>
-                </td>
-            </tr>
-        </table>
-        <!-- Notes Textbox -->
-        <div class="notes-box">
-            <label for="notes">Notes:</label><br>
-            <textarea id="notes" name="notes" rows="4" cols="40" placeholder="Enter any special instructions here."></textarea>
-        </div>
-        <br>
-        <!-- Order Button -->
-        <input type="submit" id="order-button" value="Order">
-    </form>
+    <head>
+        <title>Cheesecake Order Form</title>
+        <!-- Link the CSS file -->
+        <link rel="stylesheet" type="text/css" href="stylesheets/styles.css">
+        <style>
+            /* Styling for table layout */
+            .form-table {
+                width: auto; /* Only as wide as necessary */
+                margin-bottom: 15px;
+                border-collapse: collapse; /* Remove extra spacing between table cells */
+            }
+            .form-table th, .form-table td {
+                text-align: left; /* Align text and elements to the left */
+            }
+            .form-table th {
+                vertical-align: top; /* Align headers to the top of their columns */
+                font-weight: normal; /* Make table headers not bold */
+            }
+            .notes-box {
+                display: block;
+                margin-top: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Cheesecake Order Form -->
+        <h1>Cheesecake Order Form</h1>
+        <!-- Cheesecake Image -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg" alt="Cheesecake slice" width="200">
+        <br><br>
+        <form id="order-form">
+            <!-- Table for Quantity and Topping -->
+            <table class="order-form">
+                <tr>
+                    <th>Quantity</th>
+                    <th>Topping</th>
+                </tr>
+                <tr>
+                    <td>
+                        <select id="quantity" name="quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label><input type="radio" name="topping" value="Plain"> Plain</label><br>
+                        <label><input type="radio" name="topping" value="Cherry"> Cherry</label><br>
+                        <label><input type="radio" name="topping" value="Chocolate"> Chocolate</label>
+                    </td>
+                </tr>
+            </table>
+            <!-- Notes Textbox -->
+            <div class="notes-box">
+                <label for="notes">Notes:</label><br>
+                <textarea id="notes" name="notes" rows="4" cols="40" placeholder="Enter any special instructions here."></textarea>
+            </div>
+            <br>
+            <!-- Order Button -->
+            <input type="submit" id="order-button" value="Order">
+        </form>
 
-        <!-- Subtitle and Dropdown -->
-        <div>
-            <h2>Orders for <span id="month-selector" class="dropdown-widget" data-month="Jan">Jan</span></h2>
-            <div id="month-dropdown" class="dropdown-content">
-                <ul>
-                    <li data-month="Jan">Jan</li>
-                    <li data-month="Feb">Feb</li>
-                    <li data-month="Mar">Mar</li>
-                    <li data-month="Apr">Apr</li>
-                    <li data-month="May">May</li>
-                    <li data-month="Jun">Jun</li>
-                    <li data-month="Jul">Jul</li>
-                    <li data-month="Aug">Aug</li>
-                    <li data-month="Sep">Sep</li>
-                    <li data-month="Oct">Oct</li>
-                    <li data-month="Nov">Nov</li>
-                    <li data-month="Dec">Dec</li>
+            <!-- Subtitle and Dropdown -->
+            <div>
+                <h2>Orders for <span id="month-selector" class="dropdown-widget" data-month="Jan">Jan</span></h2>
+                <div id="month-dropdown" class="dropdown-content">
+                    <ul>
+                        <li data-month="Jan">Jan</li>
+                        <li data-month="Feb">Feb</li>
+                        <li data-month="Mar">Mar</li>
+                        <li data-month="Apr">Apr</li>
+                        <li data-month="May">May</li>
+                        <li data-month="Jun">Jun</li>
+                        <li data-month="Jul">Jul</li>
+                        <li data-month="Aug">Aug</li>
+                        <li data-month="Sep">Sep</li>
+                        <li data-month="Oct">Oct</li>
+                        <li data-month="Nov">Nov</li>
+                        <li data-month="Dec">Dec</li>
+                    </ul>
+                </div>
+
+                <ul class="info-list">
+                    <li>11 cherry</li>
+                    <li>17 chocolate</li>
+                    <li>31 plain</li>
                 </ul>
             </div>
-
-            <ul class="info-list">
-                <li>11 cherry</li>
-                <li>17 chocolate</li>
-                <li>31 plain</li>
-            </ul>
-        </div>
-</body>
+    </body>
 </html>
